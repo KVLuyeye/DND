@@ -1,48 +1,38 @@
 <script setup>
-import Header from "../src/components/Header.vue";
-import SideBar from "./components/SideBar.vue";  
-import Player from "./components/Player.vue"
-import LiveChat from "./components/LiveChat.vue"
+import MusicPlayer from "./components/MusicPlayer.vue"
+import LandingVue from "./Landing.vue";
+
+
 </script>
 
 <template>
-  <header>
-    <Header />
-  </header>
 
-  <main>
-
-    <aside id="sideBar">
-    <SideBar/>
-  </aside>
-
-    <Player/> 
-   
-  <aside>
-    <LiveChat/>
-  </aside>
-
-  </main>
+ <MusicPlayer/>
+<!--<LandingVue/>-->
 
 </template>
 
 <style lang="scss">
 
+
 body {
-font-family: sans-serif;
- min-height: 100vh; 
+font-family: sans-serif; 
  color: white;
-    }
+ padding: 0rem;
+ margin: 0rem;
 
  #app{
    display: flex; 
    flex-direction: column;
-   min-height: 100vh; 
-   margin: 0;
- }
+   min-height: 100vh;
+   margin: 0rem;
+   padding: 0rem;
+   main{
+    display: flex;
+   }
 
- main{
-  display: flex;
-  min-height: 94vh; 
- }   
+ }
+    }
+
+  
 </style>
