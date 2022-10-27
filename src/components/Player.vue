@@ -1,40 +1,83 @@
 
 
-<script>
-import tracks from "./Tracks.vue"; 
+<script> 
+
 export default {
     data () {
         return{
-          tracks,
-          player: new Audio()
+
+       Songs:{
+            songName: "",
+            artist :"",
+            album: "",
+            path: "./Remind Me.mp3", 
+            index: 0 
+            },
+
+           //Content: "./DND_DEMO-Desktop.mp4",
+
+       song: new Audio
         }
     }, 
 
+    computed:{
+        Content:function () {
+            return "./DND_DEMO-Desktop.mp4"; 
+        }
+    },
 
-   
+    methods: {
+
+        setSong() {
+            
+        },
+    
+        loadSong: function () {
+           // this.song.src = this.Songs[0].path;
+            this.song.src= this.Songs.path; 
+            this.song.load();
+        },
+
+        playSong: function () {
+            this.loadSong();
+            this.song.play(); 
+        },
+
+        setContent() {
+            if (window.screen.width < 600) {
+               
+            }
+        }
+        
+    }
 }
 </script>
 
 <template>
+{{setContent()}}
 
      <div class="main" id="player">
 
 <div id = "main-container">
-<!--  <video src="../pics/FREUNDE VOL1.mp4" autoplay muted loop></video> -->
+
+    <div id="VideoContainer">
+        <video :src ="Content" autoplay muted loop id="video"></video>
+    </div>
 
 <div>
      <div id="sliderContainer">
          <input type="range" min="0"  max="500" step="0.05" value="0" id="seekSlider" title="seekSlider">
      </div> 
       <div class="controls" id="controls"> 
-        {{tracks.track_list}}
+     
               <button  name ="play/pause" id="play" class="action-btn" type="button" aria-label="Play/Pause" @click="playSong"> 
                 PLAY
               </button>
+             
 
               <div id="soundWrapper">
                   <button name="mute" class="action-btn" id="soundBtn" type="button" aria-label="Mute/Unmute"> 
-                    SOUND
+                    SOUND 
                   </button>            
                   <input type="range" name="volume" class="volume" id ="volSlider" min="0" max="1" step="0.05" title="-">
               </div>
@@ -90,6 +133,18 @@ transition: 1s;
     display:flex;
     flex-direction: column;
     justify-content: flex-end;
+
+
+    #VideoContainer{
+        max-width: fit-content;
+        display: flex;
+
+    
+        #video{
+            max-width: 100%;
+            max-height: 100%;
+        }
+    }
 
     #sliderContainer{
         display: flex;
